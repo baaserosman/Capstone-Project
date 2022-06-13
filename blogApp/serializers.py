@@ -3,23 +3,23 @@ from .models import Blog
 
 
 class BlogSerializer(serializers.ModelSerializer):
-    get_comment_count = Blog.comment_count()
-    get_like_count = Blog.like_count()
-    get_view_count = Blog.view_count()
+    # get_comment_count = serializers.ReadOnlyField(source="comment_count")
+    # get_like_count = serializers.ReadOnlyField(source="like_count")
+    # get_view_count = serializers.ReadOnlyField(source="view_count")
 
     class Meta:
         model = Blog
-        fields =(
+        fields = (
         "title", 
         "content", 
         "image", 
-        "published_date",
+        "publish_date",
         "last_update", 
         "author", 
-        "status", 
-        "get_view_count", 
-        "get_comment_count", 
-        "get_like_count"
+        "status",
+        "comment_count", 
+        "view_count",         
+        "like_count",
         )
 
 
