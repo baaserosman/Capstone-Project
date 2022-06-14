@@ -17,6 +17,7 @@ class BlogSerializer(serializers.ModelSerializer):
         "last_update", 
         "author", 
         "status",
+        "slug",
         "comment_count", 
         "view_count",         
         "like_count",
