@@ -1,8 +1,11 @@
 from django.shortcuts import render
-from rest_framework.generics import CreateAPIView
+from rest_framework.generics import CreateAPIView, UpdateAPIView
 from django.contrib.auth.models import User
-from .serializers import RegisterSerializer
+
+from users.permissions import IsOwnerOrReadOnly
+from .serializers import ProfileSerializer, RegisterSerializer
 from rest_framework.response import Response
+from .models import Profile
 
 class RegisterAPIs(CreateAPIView):
     queryset = User.objects.all()
@@ -17,3 +20,9 @@ class RegisterAPIs(CreateAPIView):
                 "messega" : "User created successfully."
             }
         )
+
+class ProfileAPIs(UpdateAPIView):
+    permission_classes=[IsOwnerOrReadOnly]
+    queryset = Profile.objects.all()
+    serializer_class = ProfileSerializer
+    lookup_field="id"

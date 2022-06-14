@@ -44,8 +44,8 @@ INSTALLED_APPS = [
     'dj_rest_auth',
     "debug_toolbar",
     # myApps
-    "users",
-    "blogApp",
+    "blogApp.apps.BlogConfig",
+    "users.apps.UsersConfig",
 ]
 
 MIDDLEWARE = [
