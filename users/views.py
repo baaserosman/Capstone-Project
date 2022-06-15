@@ -1,5 +1,5 @@
 from django.shortcuts import render
-from rest_framework.generics import CreateAPIView, UpdateAPIView
+from rest_framework.generics import CreateAPIView, RetrieveUpdateAPIView
 from django.contrib.auth.models import User
 
 from users.permissions import IsOwnerOrReadOnly
@@ -21,7 +21,7 @@ class RegisterAPIs(CreateAPIView):
             }
         )
 
-class ProfileAPIs(UpdateAPIView):
+class ProfileAPIs(RetrieveUpdateAPIView):
     permission_classes=[IsOwnerOrReadOnly]
     queryset = Profile.objects.all()
     serializer_class = ProfileSerializer
