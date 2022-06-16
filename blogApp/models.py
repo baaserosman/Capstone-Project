@@ -35,26 +35,24 @@ class Blog(models.Model):
         return self.comment_set.all()
 
 class Comment(models.Model):
-    user = models.ForeignKey(User, on_delete=models.CASCADE, related_name="comment")
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
     blog = models.ForeignKey(Blog, on_delete=models.CASCADE)
     time_stamp = models.DateTimeField(auto_now_add=True)
     content = models.TextField()
     
     def __str__(self):
-        return self.user.username
+        return self.content
     
 class Like(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE)
     blog = models.ForeignKey(Blog, on_delete=models.CASCADE)
 
-    def __str__(self):
-        return self.user.username
+    
     
 class BlogView(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE)
     blog = models.ForeignKey(Blog, on_delete=models.CASCADE)
     time_stamp = models.DateTimeField(auto_now_add=True)
     
-    def __str__(self):
-        return self.user.username
+
     

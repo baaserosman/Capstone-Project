@@ -1,9 +1,10 @@
-from django.shortcuts import render
+
 from rest_framework import generics
-from blogApp.models import Blog
-from blogApp.serializers import BlogSerializer
+from .models import Blog
+from .serializers import BlogSerializer, CommentSerializer
 from rest_framework.viewsets import ModelViewSet
 from .permissions import IsOwnerOrReadOnly
+
 
 # class BlogList(generics.ListAPIView):
 #     serializer_class=BlogSerializer
@@ -15,5 +16,11 @@ class BlogCRUD(ModelViewSet):
     serializer_class=BlogSerializer
     
    
+class CommentCRUD(ModelViewSet):
+    queryset = Blog.objects.all()
+    # permission_classes=[IsAuthenticated]    
+    serializer_class = CommentSerializer
+    
+
 
     
