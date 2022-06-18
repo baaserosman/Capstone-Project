@@ -16,8 +16,7 @@ class BlogCRUD(ModelViewSet):
     queryset = Blog.objects.all()
     serializer_class=BlogSerializer
     
-    def get_permissions(self):
-   
+    def get_permissions(self):   
         if self.action == 'list' or self.action == "create":
             permission_classes = [permissions.IsAuthenticatedOrReadOnly]
         else:

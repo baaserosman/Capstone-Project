@@ -11,5 +11,4 @@ router.register('comments', CommentCRUD)
 urlpatterns = [    
    # path('blog/', BlogList.as_view()),
    path('', include(router.urls)),
-    
 ]
